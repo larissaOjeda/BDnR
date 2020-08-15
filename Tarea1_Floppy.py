@@ -3,7 +3,56 @@
 @author: larissa
 """
 
-#Ejerciccio 3 (Este ta re bien según io c: ) 
+#Ejercicio 1a
+#
+# AQUÍ VA EL EJERCICIO 1 a) 
+#
+
+
+
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#Ejercicio 1b Suma de matrices 
+row = int (input("Intrdouce el número de renglones de la Matriz A: " ))
+col = int (input("Intrdouce el número de columnas de la Matriz B: " ))
+
+#Formato de la matriz A 
+print("Introduce los números de la matriz A: ")
+matrizA = [[ int (input()) for i in range (col)] for j in range(row)]
+print("MatrizA: ")
+for i in range (row):
+    for j in range (col):
+        print(format(matrizA[i][j]," "), end = "")
+    print()
+
+#Formato de la matriz B 
+print("Introduce los números de la matriz B: ")
+matrizB = [[int(input()) for i in range (col)] for j in range(row)]
+print("MatrizB: ")
+for i in range (row):
+    for j in range (col):
+        print(format(matrizB[i][j]," "), end = "")
+    print()
+    
+#Resultado
+res = [[0 for i in range (col)]  for j in range (row) ]
+
+for i in range(row):
+    for j in range (col):
+            res[i][j] = matrizA[i][k] + matrizB[k][j] # inicialmente res[i][j] = 0
+        
+print("El resultado es:")
+for i in range(row):
+    for j in range (col):
+        print(format(res[i][j], " "), end= "")
+    print()
+    
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Ejerciccio 3 
 def interseccion(list1,list2):
         res = False
         for x in list1: 
@@ -13,8 +62,12 @@ def interseccion(list1,list2):
                     return res
                 
 print(interseccion(["alana","kevin","rob","mike"], ["Georgia","Eva","Felix"]))
-                    
-#Ejercicio 6 (Si jala pero hay que hacer funciones pa que quede más bello c: )
+
+
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Ejercicio 6
 #Tal vez para este ejercicio convendría escribir la función multiplicacionValida y otra llamada multiplicacion
 #de manera que el resultado solo mande llamar a la funcion multiplicacion para que se vea mas modular el código 
 p = int (input("Intrdouce el número de renglones de la Matriz A: " ))
@@ -53,8 +106,10 @@ for i in range(p):
         print(format(res[i][j], " "), end= "")
     print()
     
+        
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#Ejercicio 8 (más o menos falta revisar lo de leer el archivo bien c:  ) 
+#Ejercicio 8 (más o menos)
 def word_counter (filepath):
     text_file = open("textFile.txt", "r") #Lee el archivo
     data = text_file.read()
@@ -66,7 +121,5 @@ def word_counter (filepath):
         else: 
             counts[word] = 1  #Si es una palabra nueva entonces incializa su cuenta en 1 
     return counts #regresa el diccionario con el número de veces que se repite cada palabra
-
-
 
 
