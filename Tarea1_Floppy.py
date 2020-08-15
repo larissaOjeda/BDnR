@@ -3,7 +3,7 @@
 @author: larissa
 """
 
-#Ejercicio 1a LE FALTA DESPLAZAR SIN CAMBIAR "n"
+#Ejercicio 1a 
 def desplaza_lista(k, lista):
     if k < 0: 
         for i in range (abs(k)):  #Se trata de girar la lista 
