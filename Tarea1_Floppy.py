@@ -3,7 +3,7 @@
 @author: larissa
 """
 
-#Ejercicio 1a 
+#Ejercicio 1a
 def desplaza_lista(k, lista):
     """
     Parameters
@@ -26,64 +26,89 @@ def desplaza_lista(k, lista):
             lista.insert(0,lista.pop())
     return lista
 
+#------------------------------------------------------------------------------------------------------------------------------
 
-print (desplaza_lista (-2, [1,6,6,2,8,0] ) )  
 
+def matrix_format(row, col, letra):
+    """
+    Parameters
+    ----------
+    row : int
+        Argumento que se recibe para saber el número de renglones de la matriz A 
+    col : int
+        Argumento que se recibe para saber el número de columnas de la matriz B 
 
-#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-def matrix_format(row, col):
-    print("Introduce los números de la matriz A: ")
-    matrizA = [[ int (input()) for i in range (col)] for j in range(row)]
-    print("MatrizA: ")
+    Returns
+    -------
+    matriz : 2D-list
+        formato de la matriz como lista bidimensional que contiene los datos ingresados por el usuario.
+    
+    """
+    print("Introduce los números de la matriz" + letra + ": ")
+    matriz = [[ int (input()) for i in range (col)] for j in range(row)]
+    print("Matriz" + letra + ": ")
     for i in range (row):
         for j in range (col):
-            print(format(matrizA[i][j]," "), end = "")
+            print(format(matriz[i][j]," "), end = "")
         print()
-        
-    print("Introduce los números de la matriz B: ")
-    matrizB = [[int(input()) for i in range (col)] for j in range(row)]
-    print("MatrizB: ")
-    for i in range (row):
-        for j in range (col):
-            print(format(matrizB[i][j]," "), end = "")
-        print()
-    return matrizA, matrizB 
+    return matriz
 
+#------------------------------------------------------------------------------------------------------------------------------
+
+
+def matrixRes_format(row1,col1,res1): #Método auxiliar 
+    """
+    Parameters
+    ----------
+    row1 : int
+    col1 : int
+    res1 : 2D-list
+
+    Returns
+    -------
+    formato de la matriz resultante.
+
+    """
+    print("El resultado es:")
+    for i in range(row1):
+        for j in range (col1):
+            print(format(res1[i][j], " "), end= "")
+        print()
+    
+#------------------------------------------------------------------------------------------------------------------------------
 
 #Ejercicio 1b Suma de matrices
 def matrix_sum():
+    """
+    Returns
+    -------
+    2D-list 
+        lista bidimensional con la matriz resultante de sumar las matrices A y B.
+
+    """
     row = int (input("Intrdouce el número de renglones de la Matriz A: " ))
     col = int (input("Intrdouce el número de columnas de la Matriz B: " ))
-    matrizA, matrizB =  matrix_format(row, col)
+    matrizA =  matrix_format(row, col, "A")
+    matrizB = matrix_format(row, col, "B")
     
     res = [[0 for i in range (col)]  for j in range (row) ] #Resultado
 
     for i in range(row):
         for j in range (col):
                 res[i][j] = matrizA[i][j] + matrizB[i][j] # inicialmente res[i][j] = 0
-    
-    print("El resultado es:")
-    for i in range(row):
-        for j in range (col):
-            print(format(res[i][j], " "), end= "")
-        print()
-    return res
+            
+    return matrixRes_format(row,col,res)
 
 matrix_sum()
 
-#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+#------------------------------------------------------------------------------------------------------------------------------
 #Ejerciccio 3 
 def interseccion(list1,list2):
     """
     Parameters
     ----------
-    list1 : List
+    list1 : list
         primera lista que recibe para la intersección
     list2 : list
         segunda lista con la cual se realizará la interseccion.
@@ -100,61 +125,43 @@ def interseccion(list1,list2):
     res = False
     while i < n and not res: 
         while j <m and not res:
-             res = (list[1] == list2[j])
+             res = (list1[1] == list2[j])
              j += 1
         i += 1
         return res
                 
 print(interseccion(["alana","kevin","rob","mike"], ["Georgia","Eva","Felix"]))
 
-
-#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-#Ejercicio 6
-#Tal vez para este ejercicio convendría escribir la función multiplicacionValida y otra llamada multiplicacion
-#de manera que el resultado solo mande llamar a la funcion multiplicacion para que se vea mas modular el código 
-p = int (input("Intrdouce el número de renglones de la Matriz A: " ))
-q = int (input("Intrdouce el número de columnas de la Matriz B: " ))
-n = int (input("Intrdouce el número de columnas de la Matriz A/el número de renglones de la matriz B: " ))
-
-#Formato de la matriz A 
-print("Introduce los números de la matriz A: ")
-matrizA = [[ int (input()) for i in range (n)] for j in range(p)]
-print("MatrizA: ")
-for i in range (p):
-    for j in range (n):
-        print(format(matrizA[i][j]," "), end = "")
-    print()
-
-#Formato de la matriz B 
-print("Introduce los números de la matriz B: ")
-matrizB = [[int(input()) for i in range (q)] for j in range(n)]
-print("MatrizB: ")
-for i in range (n):
-    for j in range (q):
-        print(format(matrizB[i][j]," "), end = "")
-    print()
+#------------------------------------------------------------------------------------------------------------------------------
+                     
+#Ejercicio 6  
+def matrix_product():
+    """
+    Returns
+    -------
+    2D-list
+        lista bidimensional con la matriz resultante de la multiplicacion de las matrices A y B.
+    """
+    p = int (input("Intrdouce el número de renglones de la Matriz A: " ))
+    q = int (input("Intrdouce el número de columnas de la Matriz B: " ))
+    n = int (input("Intrdouce el número de columnas de la Matriz A/el número de renglones de la matriz B: " ))
     
-#Resultado
-res = [[0 for i in range (q)]  for j in range (n) ]
+    matrizA = matrix_format(p, n, 'A')
+    matrizB = matrix_format(n, q, 'B')
 
-for i in range(p):
-    for j in range (q):
-        for k in range (n):
-            res[i][j] = res[i][j] + matrizA[i][k] * matrizB[k][j] # inicialmente res[i][j] = 0
-        
-print("El resultado es:")
-for i in range(p):
-    for j in range (q):
-        print(format(res[i][j], " "), end= "")
-    print()
+    res = [[0 for i in range (q)]  for j in range (n) ]
+
+    for i in range(p):
+        for j in range (q):
+            for k in range (n):
+                res[i][j] = res[i][j] + matrizA[i][k] * matrizB[k][j] # inicialmente res[i][j] = 0
     
-        
-#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    return matrixRes_format(p,q,res)
 
-#Ejercicio 8 (más o menos falta revisar el checar el archivo)  
+matrix_product()
+#------------------------------------------------------------------------------------------------------------------------------
+
+#Ejercicio 8
 def word_counter (filepath):
     """
     Parameters
@@ -187,3 +194,6 @@ def word_counter (filepath):
                 counts[word] = 1  #Si es una palabra nueva entonces incializa su cuenta en 1 
         res = len(counts.keys()) #Cuenta el número de llaves del diccionario counts para saber las palabras distintas 
     return res #regresa el numero de palabras distintas 
+
+
+
