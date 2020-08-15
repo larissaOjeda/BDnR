@@ -5,6 +5,19 @@
 
 #Ejercicio 1a 
 def desplaza_lista(k, lista):
+    """
+    Parameters
+    ----------
+    k : int 
+        cantidad de lugares a desplazar (un valor positivo indica desplazar a la derecha; un valor negativo, a la izquierda.)
+    lista : list
+        lista que se desea desplazar (girar).
+
+    Returns
+    -------
+    lista : list
+        lista desplazada 'k' lugares a la derecha o izquierda. 
+    """
     if k < 0: 
         for i in range (abs(k)):  #Se trata de girar la lista 
             lista.append(lista.pop(0))
@@ -117,19 +130,35 @@ for i in range(p):
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #Ejercicio 8 (más o menos falta revisar el checar el archivo)  
-#from pathlib import Path DUDA
-#data_folder = Path("source_data/text_files/") DUDA
-
 def word_counter (filepath):
-    text_file = open("textFile.txt", "r") #Lee el archivo DUDA
-    data = text_file.read() #DUDA
-    words = data.split()  #Separa un string en una lista donde cada palabra es un elemento de la lista 
-    counts = dict()  #crea un diccionario 
-    for word in words : #ciclo para recorrer cada palabra del texto 
-        if word in counts: 
-            counts[word] += 1 #Si la palabra ya se encontraba en counts entonces se suma una unidad a la cuenta 
-        else: 
-            counts[word] = 1  #Si es una palabra nueva entonces incializa su cuenta en 1 
-    return len(counts.keys()) # regresa el numero de palabras distintas (cuenta el número de llaves del diccionario) 
+    """
+    Parameters
+    ----------
+    filepath : path
+        Ruta del archivo que se quiere leer para contar las palabras 
 
-
+    Returns
+    -------
+    res : int 
+        número de palabras distintas obtenido de contar las llaves del diccionario 'counts'. 
+        En counts cada llave es una palabra y tiene asignado un int que indica el número de repeticiones de esa palabra en el texto. 
+    """
+    if filepath.split('.')[-1] != 'txt':
+        print ("El archivo que ingresaste no tiene la extensión correcta, inténtalo de nuevo: ")
+        fp = str(input("Ingresa el filepath del archivo .txt que desees leer"))
+        return word_counter(fp)
+    else:
+        text_file = open("textFile.txt", "r") #Lee el archivo
+        data = text_file.read()
+        words = data.split()  #Separa un string en una lista donde cada palabra es un elemento de la lista 
+        counts = dict()  #crea un diccionario 
+        res = 0
+        
+        for word in words : #ciclo para recorrer cada palabra del texto 
+            word = word.lower()
+            if word in counts: 
+                counts[word] += 1 #Si la palabra ya se encontraba en counts entonces se suma una unidad a la cuenta 
+            else: 
+                counts[word] = 1  #Si es una palabra nueva entonces incializa su cuenta en 1 
+        res = len(counts.keys()) #Cuenta el número de llaves del diccionario counts para saber las palabras distintas 
+    return res #regresa el numero de palabras distintas 
