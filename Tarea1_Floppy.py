@@ -30,46 +30,52 @@ def desplaza_lista(k, lista):
 print (desplaza_lista (-2, [1,6,6,2,8,0] ) )  
 
 
-
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-#Ejercicio 1b Suma de matrices 
-row = int (input("Intrdouce el número de renglones de la Matriz A: " ))
-col = int (input("Intrdouce el número de columnas de la Matriz B: " ))
-
-#Formato de la matriz A 
-print("Introduce los números de la matriz A: ")
-matrizA = [[ int (input()) for i in range (col)] for j in range(row)]
-print("MatrizA: ")
-for i in range (row):
-    for j in range (col):
-        print(format(matrizA[i][j]," "), end = "")
-    print()
-
-#Formato de la matriz B 
-print("Introduce los números de la matriz B: ")
-matrizB = [[int(input()) for i in range (col)] for j in range(row)]
-print("MatrizB: ")
-for i in range (row):
-    for j in range (col):
-        print(format(matrizB[i][j]," "), end = "")
-    print()
-    
-#Resultado
-res = [[0 for i in range (col)]  for j in range (row) ]
-
-for i in range(row):
-    for j in range (col):
-            res[i][j] = matrizA[i][k] + matrizB[k][j] # inicialmente res[i][j] = 0
+def matrix_format(row, col):
+    print("Introduce los números de la matriz A: ")
+    matrizA = [[ int (input()) for i in range (col)] for j in range(row)]
+    print("MatrizA: ")
+    for i in range (row):
+        for j in range (col):
+            print(format(matrizA[i][j]," "), end = "")
+        print()
         
-print("El resultado es:")
-for i in range(row):
-    for j in range (col):
-        print(format(res[i][j], " "), end= "")
-    print()
-    
+    print("Introduce los números de la matriz B: ")
+    matrizB = [[int(input()) for i in range (col)] for j in range(row)]
+    print("MatrizB: ")
+    for i in range (row):
+        for j in range (col):
+            print(format(matrizB[i][j]," "), end = "")
+        print()
+    return matrizA, matrizB 
 
+
+#Ejercicio 1b Suma de matrices
+def matrix_sum():
+    row = int (input("Intrdouce el número de renglones de la Matriz A: " ))
+    col = int (input("Intrdouce el número de columnas de la Matriz B: " ))
+    matrizA, matrizB =  matrix_format(row, col)
+    
+    res = [[0 for i in range (col)]  for j in range (row) ] #Resultado
+
+    for i in range(row):
+        for j in range (col):
+                res[i][j] = matrizA[i][j] + matrizB[i][j] # inicialmente res[i][j] = 0
+    
+    print("El resultado es:")
+    for i in range(row):
+        for j in range (col):
+            print(format(res[i][j], " "), end= "")
+        print()
+    return res
+
+matrix_sum()
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #Ejerciccio 3 
@@ -102,7 +108,8 @@ def interseccion(list1,list2):
 print(interseccion(["alana","kevin","rob","mike"], ["Georgia","Eva","Felix"]))
 
 
-
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #Ejercicio 6
