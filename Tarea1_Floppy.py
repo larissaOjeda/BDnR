@@ -109,10 +109,13 @@ for i in range(p):
         
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#Ejercicio 8 (más o menos)
+#Ejercicio 8 (más o menos falta revisar el checar el archivo)  
+#from pathlib import Path DUDA
+#data_folder = Path("source_data/text_files/") DUDA
+
 def word_counter (filepath):
-    text_file = open("textFile.txt", "r") #Lee el archivo
-    data = text_file.read()
+    text_file = open("textFile.txt", "r") #Lee el archivo DUDA
+    data = text_file.read() #DUDA
     words = data.split()  #Separa un string en una lista donde cada palabra es un elemento de la lista 
     counts = dict()  #crea un diccionario 
     for word in words : #ciclo para recorrer cada palabra del texto 
@@ -120,6 +123,6 @@ def word_counter (filepath):
             counts[word] += 1 #Si la palabra ya se encontraba en counts entonces se suma una unidad a la cuenta 
         else: 
             counts[word] = 1  #Si es una palabra nueva entonces incializa su cuenta en 1 
-    return counts #regresa el diccionario con el número de veces que se repite cada palabra
+    return len(counts.keys()) # regresa el numero de palabras distintas (cuenta el número de llaves del diccionario) 
 
 
