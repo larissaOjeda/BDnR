@@ -6,13 +6,15 @@
 #Ejercicio 1a LE FALTA DESPLAZAR SIN CAMBIAR "n"
 def desplaza_lista(k, lista):
     if k < 0: 
-        for i in range (abs(k)):
-            lista.append(0)
+        for i in range (abs(k)):  #Se trata de girar la lista 
+            lista.append(lista.pop(0))
     else: 
         for i in range(k):
-            lista.insert(0,0)
+            lista.insert(0,lista.pop())
     return lista
 
+
+print (desplaza_lista (-2, [1,6,6,2,8,0] ) )  
 
 
 
