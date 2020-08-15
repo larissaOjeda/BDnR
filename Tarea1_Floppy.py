@@ -74,12 +74,30 @@ for i in range(row):
 
 #Ejerciccio 3 
 def interseccion(list1,list2):
-        res = False
-        for x in list1: 
-            for y in list2: 
-                if x == y: 
-                    res = True 
-                    return res
+    """
+    Parameters
+    ----------
+    list1 : List
+        primera lista que recibe para la intersección
+    list2 : list
+        segunda lista con la cual se realizará la interseccion.
+
+    Returns
+    -------
+    res : boolean
+        variable True en caso de que list1 y list2 tengan al menos 1 elemeto en común entre ellas y False en caso contrario. 
+    """
+    n = len(list1)
+    m = len(list2)
+    i = 0
+    j = 0
+    res = False
+    while i < n and not res: 
+        while j <m and not res:
+             res = (list[1] == list2[j])
+             j += 1
+        i += 1
+        return res
                 
 print(interseccion(["alana","kevin","rob","mike"], ["Georgia","Eva","Felix"]))
 
