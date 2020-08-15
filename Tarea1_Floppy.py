@@ -4,9 +4,14 @@
 """
 
 #Ejercicio 1a
-#
-# AQUÍ VA EL EJERCICIO 1 a) 
-#
+def desplaza_lista(k, lista):
+    if k < 0: 
+        for i in range (abs(k)):
+            lista.append(0)
+    else: 
+        for i in range(k):
+            lista.insert(0,0)
+    return lista
 
 
 
