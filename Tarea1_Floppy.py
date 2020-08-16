@@ -42,7 +42,6 @@ def matrix_format(row, col, letra):
     -------
     matriz : 2D-list
         formato de la matriz como lista bidimensional que contiene los datos ingresados por el usuario.
-    
     """
     print("Introduce los números de la matriz" + letra + ": ")
     matriz = [[ int (input()) for i in range (col)] for j in range(row)]
@@ -84,7 +83,6 @@ def matrix_sum():
     -------
     2D-list 
         lista bidimensional con la matriz resultante de sumar las matrices A y B.
-
     """
     row = int (input("Intrdouce el número de renglones de la Matriz A: " ))
     col = int (input("Intrdouce el número de columnas de la Matriz B: " ))
