@@ -1,0 +1,17 @@
+La conmutación de paquetes es un método para agrupar la información que
+será transmitida por una red. La información se rompe en partes más pequeñas,
+llamados paquetes. Los tres entrevistados dan un breve recuento de la historia de la conmutación de paquetes.
+La primer cosa relatada es una analogía con envíos de partes de la Biblia. 
+Sin embargo, no resulta totalmente esclarecedor pues en la analogía el receptor es el
+encargado de reacomodar los paquetes (pues llegan en desorden), mientras que al
+hablar de la conmutación, el entrevistado no señala que el acomodo se haga en (o lo realice) el receptor (ni que el acomodo sea necesario).
+Es importante señalar que fue necesario el idear este método porque, al particionar la información, los tiempos de espera son menores que si se enviara el
+mensaje completo en una tirada. También resulta esclarecedor que mientras los
+seres humanos y las telecomunicaciones entre nosotros resultan ser ”time based”,
+las computadoras no requieren de dicha condición.
+Como en todas las disciplinas y ramas del conocimiento humano y de las aplicaciones de este, existió una reacción en contra de la aplicación de este método.
+La resistencia al cambio es algo de esperarse. Similar a esto resulta el hecho de
+que se les reprochara que cada quien escribía su cada cual.
+Por último, lo más sorprendente es que se logró lo opuesto de lo que se había
+estado intentando hacer. Se quería enviar datos a través del teléfono y sus líneas
+y se terminó enviando mensajes de voz a través de estas redes.
