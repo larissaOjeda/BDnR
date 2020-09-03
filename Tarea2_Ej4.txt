@@ -1,0 +1,85 @@
+
+
+// Creación de tablas 
+// Clientes
+create table clientes(
+	idC varchar, 
+	nomC varchar,
+	apell varchar, 
+	productos set<text>,
+	primary key(idC)
+);
+
+//Productos 
+create table productos(
+	nomProd varchar, 
+	numClientes counter, 
+	primary key(nomProd)
+);
+
+//Movimientos 
+create table movs(
+	movId varchar,
+	nomMov varchar,
+	nomProd varchar,
+	nomC varchar,
+	fecha timestamp,
+	monto int,
+	lugar varchar,
+	primary key(nomC,fecha,monto)
+) WITH CLUSTERING ORDER BY (fecha DESC);
+
+=====================================================
+//Inserts 
+//Clientes
+insert into clientes (idC,nomC, apell, productos)values ('1','Juana','de Arco', {'cheques','tarjCred','inversion'});
+insert into clientes (idC,nomC, apell, productos)values ('2','Maria','Monteros', {'tarjCred'});
+insert into clientes (idC,nomC, apell, productos)values ('3','Alberto','Cota', {'tarjCred','inversion'});
+insert into clientes (idC,nomC, apell, productos)values ('4','Sascha','Fitness', {'inversion'});
+
+
+//Movimientos
+insert into movs (movId, nomMov, nomProd, nomC, fecha, monto, lugar) values ('11','retiro','cheques','Juana', '2020-10-02',3500,'ventanilla');
+insert into movs (movId, nomMov, nomProd, nomC, fecha, monto, lugar) values ('12','deposito','tarjCred','Juana', '2020-09-23',3500,'terminal');
+insert into movs (movId, nomMov, nomProd, nomC, fecha, monto, lugar) values ('13','deposito','inversion','Juana', '2020-09-23',2500,'celular');
+insert into movs (movId, nomMov, nomProd, nomC, fecha, monto, lugar) values ('31','deposito','tarjCred','Alberto', '2020-09-24',2500,'internet');
+insert into movs (movId, nomMov, nomProd, nomC, fecha, monto, lugar) values ('21','deposito','tarjCred','Alberto', '2020-09-26',1200,'terminal');
+insert into movs (movId, nomMov, nomProd, nomC, fecha, monto, lugar) values ('41','deposito','inversion','Sascha', '2020-09-26',3000,'ventanilla');
+
+
+=========================================================================================================================================================
+//Indices
+create index on clientes(nomC);
+create index on movs(monto);
+create index on movs(nomProd);
+
+//Updates 
+update productos set numClientes = numClientes+2 where nomProd='inversiones';
+update productos set numClientes = numClientes+3 where nomProd='tarjCred';
+update productos set numClientes = numClientes+1 where nomProd='cheques';
+
+
+=========================================================================================================================================================
+
+// INCISO a) El tipo de productos que maneja un cliente dado.
+select productos from clientes where nomC='Sascha';
+select productos from clientes where idC='1';
+
+//INCISO b) La cantidad total de clientes que manejan inversiones. 
+select * from productos where nomProd='inversiones';
+select numClientes from productos where nomProd='inversiones';
+
+//INCISO  c) El nombre de los clientes que hicieron depósitos o retiros la semana pasada (día inicial: lunes).
+select nomC from movs where fecha > '2020-09-24' and fecha < '2020-09-30' allow filtering;
+
+
+//INCISO  d) El nombre de los clientes, y el día, que hicieron retiros superiores a un monto dado.
+select nomC,nomMov,fecha from movvs where fecha='2020-09-26' and  monto>1100 allow filtering; 
+
+//INCISO  e) Los montos de los depósitos y retiros que se hicieron para un producto dado en un rango de fechas.
+select monto, nomProd from movs where nomProd='inversion'and fecha >'2020-09-21' and fecha < '2020-09-27' allow filtering; 
+
+//INCISO  f) El  nombre  de  los  productos, y del medio, que tuvieron depósitos superiores a un monto específico en un día concreto
+select nomProd,lugar from movs where fecha > '2020-09-24' and fecha < '2020-09-30' and monto > 1300  allow filtering;
+
+
