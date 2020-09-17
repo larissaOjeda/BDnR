@@ -1,0 +1,159 @@
+
+LARISSA TRASVIÑA & EVA RIVAROLA
+
+PROBLEMA #3 
+
+use problema3;
+
+-- Creación de las tablas (collections) con contenido --
+--Tabla CompraCli--
+
+db.createCollection("compraCli");
+
+a = {fecha:'2020-08-22', suc:3, nomcli:'María',prod_precio:{'pan': 24.1, 'jabon': 24.5},prod_cant:{'pan': 4, 'jabon': 2}};
+db.compraCli.save(a);
+
+a = {fecha:'2020-08-29', suc:1, nomcli:'María',prod_precio:{'pera': 5.5, 'pan': 24.1, 'leche': 22.1, 'jabon': 24.5, 'cereal': 35.54},prod_cant:{'pera': 4, 'pan': 4, 'leche': 1, 'jabon': 3, 'cereal': 3}};
+db.compraCli.save(a);
+
+a = {fecha:'2020-08-18', suc:2, nomcli:'María',prod_precio:{'cereal': 35.54, 'manzana': 6.23, 'pera': 5.5, 'helado': 32.1},prod_cant:{'cereal': 2, 'manzana': 4, 'pera': 3, 'helado': 3}};
+db.compraCli.save(a);
+
+a = {fecha:'2020-08-12', suc:2, nomcli:'Juan', prod_precio:{'leche': 22.1, 'jabon': 24.5, 'helado': 32.1, 'pan': 24.1},prod_cant:{'leche': 1, 'jabon': 4, 'helado': 2, 'pan': 1}};
+db.compraCli.save(a);
+
+a = {fecha:'2020-07-21', suc:1, nomcli:'Maria', prod_precio:{'pan': 24.1, 'jabon': 24.5},prod_cant:{'pan': 4, 'jabon': 2}};
+db.compraCli.save(a);
+
+a = {fecha:'2020-08-23', suc:3, nomcli:'Ale', prod_precio:{'pan': 24.1, 'manzana': 6.23}, prod_cant:{'pan': 2, 'manzana': 4}};
+db.compraCli.save(a);
+
+a = {fecha:'2020-07-29', suc:1, nomcli:'Juan', prod_precio:{'pera': 5.5, 'cereal': 35.54}, prod_cant:{'pera': 3, 'cereal': 3}};
+db.compraCli.save(a);
+
+a = {fecha:'2020-08-16', suc:1, nomcli:'Pepe', prod_precio:{'pan': 24.1, 'pera': 5.5, 'helado': 32.1, 'manzana': 6.23, 'jabon': 24.5, 'leche': 22.1}, prod_cant:{'pan': 3, 'pera': 3, 'helado': 1, 'manzana': 2, 'jabon': 2, 'leche': 4}};
+db.compraCli.save(a);
+
+a = {fecha:'2020-08-22', suc:2, nomcli:'Ale', prod_precio:{'pan': 24.1, 'helado': 32.1, 'cereal': 35.54, 'jabon': 24.5, 'leche': 22.1, 'pera': 5.5}, prod_cant:{'pan': 1, 'helado': 4, 'cereal': 3, 'jabon': 4, 'leche': 3, 'pera': 2}};
+db.compraCli.save(a);
+
+
+--Tabla Ventas--
+db.createCollection("ventas");
+
+v = {fecha:'2020-08-22', suc:3, prod_vendidos:{'pan': 4, 'jabon': 2}, prod_motot:{'pan': 96.4, 'jabon': 49.0}, cantipos:2};
+db.ventas.save(v);
+
+v = {fecha:'2020-08-29', suc:1, prod_vendidos:{'pera': 4, 'pan': 4, 'leche': 1, 'jabon': 3, 'cereal': 3}, prod_motot:{'pera': 22.0, 'pan': 96.4, 'leche': 22.1, 'jabon': 73.5, 'cereal': 106.62}, cantipos:5};
+db.ventas.save(v);
+
+v = {fecha:'2020-08-18', suc:2, prod_vendidos:{'cereal': 2, 'manzana': 4, 'pera': 3, 'helado': 3}, prod_motot:{'cereal': 71.08, 'manzana': 24.92, 'pera': 16.5, 'helado': 96.30000000000001}, cantipos:4};
+db.ventas.save(v);
+
+v = {fecha:'2020-08-12', suc:2, prod_vendidos:{'leche': 1, 'jabon': 4, 'helado': 2, 'pan': 1}, prod_motot:{'leche': 22.1, 'jabon': 98.0, 'helado': 64.2, 'pan': 24.1}, cantipos:4};
+db.ventas.save(v);
+
+v = {fecha:'2020-07-21', suc:1, prod_vendidos:{'pan': 4, 'jabon': 2}, prod_motot:{'pan': 96.4, 'jabon': 49.0}, cantipos:2};
+db.ventas.save(v);
+
+v = {fecha:'2020-08-23', suc:3, prod_vendidos:{'pan': 2, 'manzana': 4}, prod_motot:{'pan': 48.2, 'manzana': 24.92}, cantipos:2};
+db.ventas.save(v);
+
+v = {fecha:'2020-08-29', suc:1, prod_vendidos:{'pera': 3, 'cereal': 3}, prod_motot:{'pera': 16.5, 'cereal': 106.62}, cantipos:2};
+db.ventas.save(v);
+
+v = {fecha:'2020-08-16', suc:1, prod_vendidos:{'pan': 3, 'pera': 3, 'helado': 1, 'manzana': 2, 'jabon': 2, 'leche': 4}, prod_motot:{'pan': 72.30000000000001, 'pera': 16.5, 'helado': 32.1, 'manzana': 12.46, 'jabon': 49.0, 'leche': 88.4}, cantipos:6};
+db.ventas.save(v);
+
+v = {fecha:'2020-08-22', suc:2, prod_vendidos:{'pan': 1, 'helado': 4, 'cereal': 3, 'jabon': 4, 'leche': 3, 'pera': 2}, prod_motot:{'pan': 24.1, 'helado': 128.4, 'cereal': 106.62, 'jabon': 98.0, 'leche': 66.30000000000001, 'pera': 11.0}, cantipos:6};
+db.ventas.save(v);
+
+======================================================================================================================================================================================================================================================
+-- Consultas --
+a) db.compraCli.count({fecha:'2020-08-29',suc:1});
+b) db.compraCli.count({fecha:'2020-08-22'});
+c) db.compraCli.find({fecha:'2020-08-18', nomCli:'María'},{prod_cant:1});
+d) db.compraCli.find({fecha:{$gte:'2020-08-01', $lt:'2020-08-31'}},{nomcli:1});
+e) db.ventas.find({fecha:'2020-08-16'},{cantipos:1});
+f) db.ventas.find({fecha:{$gte:'2020-08-24', $lt:'2020-08-31'}},{prod_vendidos:1});
+
+
+======================================================================================================================================================================================================================================================
+======================================================================================================================================================================================================================================================
+======================================================================================================================================================================================================================================================
+
+PROBLEMA #4
+
+use problema4;
+
+-- Creación de las tablas (collections) con contenido --
+--Tabla clientes--
+
+db.createCollection("clientes");
+
+c = {idC:1, nomC:'Juana', apell:'de Arco', productos:['cheques','tarjCred','inversion']};
+db.clientes.save(c);
+
+c = {idC:2, nomC:'Maria', apell:'Monteros', productos:['tarjCred']};
+db.clientes.save(c);
+
+c = {idC:3, nomC:'Alberto', apell:'Cota', productos:['tarjCred','inversion']};
+db.clientes.save(c);
+
+c = {idC:4, nomC:'Sascha', apell:'Fitness', productos:['inversion']};
+db.clientes.save(c);
+
+
+
+-- Tabla productos --
+db.createCollection("prods");
+
+p = {nomProd:'inversion', numCli:2};
+db.prods.save(p);
+
+p = {nomProd:'tarjCred', numCli:3};
+db.prods.save(p);
+
+p = {nomProd:'cheques', numCli:1};
+db.prods.save(p);
+
+
+--Tabla Movimientos--
+db.createCollection("movs");
+
+m = {movId:11, nomMov:'retiro', nomProd:'cheques', nomC:'Juana', fecha:'2020-10-02', monto:3500, lugar:'ventanilla'};
+db.movs.save(m);
+
+m = {movId:12, nomMov:'deposito', nomProd:'tarjCred', nomC:'Juana', fecha:'2020-09-23', monto:3500, lugar:'terminal'};
+db.movs.save(m);
+
+m = {movId:13, nomMov:'deposito', nomProd:'inversion', nomC:'Juana', fecha:'2020-09-23', monto:2500, lugar:'celular'};
+db.movs.save(m);
+
+m = {movId:31, nomMov:'deposito', nomProd:'tarjCred', nomC:'Alberto', fecha:'2020-09-24', monto:2500, lugar:'internet'};
+db.movs.save(m);
+
+m = {movId:21, nomMov:'deposito', nomProd:'tarjCred', nomC:'Alberto', fecha:'2020-09-26', monto:1200, lugar:'terminal'};
+db.movs.save(m);
+
+m = {movId:41, nomMov:'deposito', nomProd:'inversion', nomC:'Sascha', fecha:'2020-09-26', monto:3000, lugar:'ventanilla'};
+db.movs.save(m);
+
+
+
+
+=========================================================================================================================================================
+
+
+-- Consultas --
+
+a) db.clientes.find({nomC:'Sascha'},{productos:1,_id:0});
+b) db.prods.find({nomProd:'inversion'},{numClientes:1})
+c) db.movs.find({fecha:{$gte:'2020-09-24', $lte:'2020-09-30'}},{nomC:1,_id:0});
+d) db.movs.find({monto:{$gt:3100}, nomMov:'retiro'}, {nomC:1,fecha:1,_id:0}).pretty();
+e) db.movs.find({fecha:{$gt:'2020-09-21', $lt:'2020-09-27'}, nomProd:'inversion'},{nomMov:1,monto:1,_id:0});
+f) db.movs.find({fecha:'2020-09-24', monto:{$gt:1000}},{nomProd:1, lugar:1, _id:0});
+
+
+
+
