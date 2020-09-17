@@ -1,5 +1,78 @@
+PROBLEMA #3: SUPERMERCADO
+create keyspace supermercado
+with replication = { 'class' : 'SimpleStrategy',
+ 'replication_factor' : 1}; 
+
+use supermercado;
+
+create table compracli(
+	fecha timestamp,
+	suc int,
+	nomcli text,
+	prod_precio map<text,float>,
+	prod_cant map<text,int>,
+	primary key (suc,fecha,nomcli)
+);
+
+create table ventas(
+	fecha timestamp,
+	suc int,
+	prod_vendidos map<text,int>,
+	prod_montot map<text,float>,
+	cantipos int,
+	primary key (suc,fecha)
+);
+
+//inserts de compracli
+insert into compracli (fecha,suc,nomcli,prod_precio,prod_cant) 
+values ('2020-08-22',3,'María',{'pan': 24.1, 'jabon': 24.5},{'pan': 4, 'jabon': 2});
+insert into compracli (fecha,suc,nomcli,prod_precio,prod_cant) 
+values ('2020-08-29',1,'María',{'pera': 5.5, 'pan': 24.1, 'leche': 22.1, 'jabon': 24.5, 'cereal': 35.54},{'pera': 4, 'pan': 4, 'leche': 1, 'jabon': 3, 'cereal': 3});
+insert into compracli (fecha,suc,nomcli,prod_precio,prod_cant) 
+values ('2020-08-18',2,'María',{'cereal': 35.54, 'manzana': 6.23, 'pera': 5.5, 'helado': 32.1},{'cereal': 2, 'manzana': 4, 'pera': 3, 'helado': 3});
+insert into compracli (fecha,suc,nomcli,prod_precio,prod_cant) 
+values ('2020-08-12',2,'Juan',{'leche': 22.1, 'jabon': 24.5, 'helado': 32.1, 'pan': 24.1},{'leche': 1, 'jabon': 4, 'helado': 2, 'pan': 1});
+insert into compracli (fecha,suc,nomcli,prod_precio,prod_cant) 
+values ('2020-07-21',1,'María',{'pan': 24.1, 'jabon': 24.5},{'pan': 4, 'jabon': 2});
+insert into compracli (fecha,suc,nomcli,prod_precio,prod_cant) 
+values ('2020-08-23',3,'Ale',{'pan': 24.1, 'manzana': 6.23},{'pan': 2, 'manzana': 4});
+insert into compracli (fecha,suc,nomcli,prod_precio,prod_cant) 
+values ('2020-07-29',1,'Juan',{'pera': 5.5, 'cereal': 35.54},{'pera': 3, 'cereal': 3});
+insert into compracli (fecha,suc,nomcli,prod_precio,prod_cant) 
+values ('2020-08-16',1,'Pepe',{'pan': 24.1, 'pera': 5.5, 'helado': 32.1, 'manzana': 6.23, 'jabon': 24.5, 'leche': 22.1},{'pan': 3, 'pera': 3, 'helado': 1, 'manzana': 2, 'jabon': 2, 'leche': 4});
+insert into compracli (fecha,suc,nomcli,prod_precio,prod_cant) 
+values ('2020-08-22',2,'Ale',{'pan': 24.1, 'helado': 32.1, 'cereal': 35.54, 'jabon': 24.5, 'leche': 22.1, 'pera': 5.5},{'pan': 1, 'helado': 4, 'cereal': 3, 'jabon': 4, 'leche': 3, 'pera': 2});
+
+ 
+//inserts de ventas
+insert into ventas (fecha,suc,prod_vendidos,prod_montot,cantipos) 
+values('2020-08-22',3,{'pan': 4, 'jabon': 2},{'pan': 96.4, 'jabon': 49.0},2);
+insert into ventas (fecha,suc,prod_vendidos,prod_montot,cantipos) 
+values('2020-08-29',1,{'pera': 4, 'pan': 4, 'leche': 1, 'jabon': 3, 'cereal': 3},{'pera': 22.0, 'pan': 96.4, 'leche': 22.1, 'jabon': 73.5, 'cereal': 106.62},5);
+insert into ventas (fecha,suc,prod_vendidos,prod_montot,cantipos) 
+values('2020-08-18',2,{'cereal': 2, 'manzana': 4, 'pera': 3, 'helado': 3},{'cereal': 71.08, 'manzana': 24.92, 'pera': 16.5, 'helado': 96.30000000000001},4);
+insert into ventas (fecha,suc,prod_vendidos,prod_montot,cantipos) 
+values('2020-08-12',2,{'leche': 1, 'jabon': 4, 'helado': 2, 'pan': 1},{'leche': 22.1, 'jabon': 98.0, 'helado': 64.2, 'pan': 24.1},4);
+insert into ventas (fecha,suc,prod_vendidos,prod_montot,cantipos) 
+values('2020-07-21',1,{'pan': 4, 'jabon': 2},{'pan': 96.4, 'jabon': 49.0}),2;
+insert into ventas (fecha,suc,prod_vendidos,prod_montot,cantipos) 
+values('2020-08-23',3,{'pan': 2, 'manzana': 4},{'pan': 48.2, 'manzana': 24.92},2);
+insert into ventas (fecha,suc,prod_vendidos,prod_montot,cantipos) 
+values('2020-07-29',1,{'pera': 3, 'cereal': 3},{'pera': 16.5, 'cereal': 106.62},2);
+insert into ventas (fecha,suc,prod_vendidos,prod_montot,cantipos) 
+values('2020-08-16',1,{'pan': 3, 'pera': 3, 'helado': 1, 'manzana': 2, 'jabon': 2, 'leche': 4},{'pan': 72.30000000000001, 'pera': 16.5, 'helado': 32.1, 'manzana': 12.46, 'jabon': 49.0, 'leche': 88.4},6);
+insert into ventas (fecha,suc,prod_vendidos,prod_montot,cantipos) 
+values('2020-08-22',2,{'pan': 1, 'helado': 4, 'cereal': 3, 'jabon': 4, 'leche': 3, 'pera': 2},{'pan': 24.1, 'helado': 128.4, 'cereal': 106.62, 'jabon': 98.0, 'leche': 66.30000000000001, 'pera': 11.0},6);
+
+a) select count(*) from compracli where fecha='2020-08-29' and suc = 1;
+b) select count(*) from compracli where fecha='2020-07-29' allow filtering;
+c) select prod_cant from compracli where fecha = '2020-07-21' AND nomcli = 'María' allow filtering;
+d) select nomcli from compracli where fecha >= '2020-08-01' and fecha <='2020-08-31' allow filtering;
+e) select cantipos from ventas where fecha = '2020-08-16' allow filtering;
+f) select prod_vendidos from ventas where fecha <= '2020-08-30' and fecha>= '2020-08-24' allow filtering;
 
 
+PROBLEMA # 4: BANCO
 // Creación de tablas 
 // Clientes
 create table clientes(
